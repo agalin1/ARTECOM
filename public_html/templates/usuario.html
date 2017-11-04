@@ -1,0 +1,119 @@
+<script type="text/JavaScript">
+<!--
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.style3 {font-weight: bold}
+.style4 {font-weight: bold}
+-->
+</style>
+
+
+	<div class="row">
+		<div class="col s6">
+			<h1>{{message}}</h1>
+			<p>{{subtitle}}</p>
+		</div>
+	</div>
+
+	<div class="row">			
+	    	<div class="col s4">
+				<form>
+					
+				  <div class="row">
+				    <div class="input-field col s12">
+					  
+					    <input required id="Tipo_documento" type="text" class="validate"  ng-value="nuevo.Tipo_documento" ng-model="nuevo.Tipo_documento">
+                        <strong>
+                        <label for="Tipo_documento">Tipo documento</label>
+                        </strong> </div>
+				  </div>
+
+					<div class="row">
+					  <div class="input-field col s12">
+				          <input required id="Numero_documento" type="text" class="validate" ng-value="nuevo.Numero_documento" ng-model="nuevo.Numero_documento">
+			            <label for="Numero_documento"><strong>Numero documento</strong></label>
+				        </div>
+					</div>
+
+					<div class="row style3">
+						<div class="input-field col s12">
+				          <input required id="Nombre_cliente" type="text" class="validate" ng-value="nuevo.Nombre_cliente" ng-model="nuevo.Nombre_cliente">
+				          <label for="Nombre_cliente">Nombre cliente</label>
+				        </div>
+					</div>
+					
+					<div class="row style4">
+						<div class="input-field col s12">
+				          <input required id="Telefono_residencia" type="text" class="validate" ng-value="nuevo.Telefono_residencia" ng-model="nuevo.Telefono_residencia">
+				          <label for="Telefono_residencia">Telefono residencia</label>
+				        </div>
+					</div>
+					
+					<div class="row">
+						<div class="s12 col input-field"><strong>
+			            <input required id="Telefono_celular" type="text" class="validate" ng-value="nuevo.Telefono_celular" ng-model="nuevo.Telefono_celular">
+			            <label for="Telefono_celular">Telefono celular</label>
+				        </strong></div>
+					</div>
+					
+
+					<div class="row">
+						<div class="col-s4" ng-if="nuevo.Id == null">
+							<button class="btn waves-effect blue" ng-click="post()">Adicionar</button>
+						</div>
+
+						<div class="col-s4" ng-if="nuevo.Id != null">
+							<button class="btn waves-effect blue" ng-click="put(nuevo.Id)">Actualizar</button>
+						</div>
+					</div>
+	    		</form>
+
+
+	    	</div>
+	    	<div class="col s8">
+	    	<input type="text" ng-model="search" placeholder="Buscar">
+				
+
+
+	    		<table class="highlight responsive-table">
+	    			<thead>
+	    				<tr>
+	    					<th>ID</th>
+	    					<th>Tipo documento</th>
+	    					<th>Numero documento</th>
+	    					<th>Nombre cliente</th>
+							<th>Telefono residencia</th>
+							<th>Telefono celular</th>
+							<th></th>
+	    					<th></th>
+	    				</tr>
+	    			</thead>
+
+	    			<tbody ng-if="lista.length != null">
+	    				<tr ng-click="get(x.Id)" ng-repeat="x in lista | filter : search">
+	    					<td>{{x.Id}}</td>
+	    					<td>{{x.Tipo_documento}}</td>
+							<td>{{x.Numero_documento}}</td>
+	    					<td>{{x.Nombre_cliente}}</td>
+	    					<td>{{x.Telefono_residencia}}</td>
+							<td>{{x.Telefono_celular}}</td>
+	    					<td><button class="btn btn-small waves-effect red" ng-click="delete(x.Id)">eliminar</button></td>
+	    				</tr>
+	    			</tbody>
+
+	    			<tbody ng-if="lista.length == null">
+	    				<tr>
+	    					<td colspan="4">No hay datos dispobibles</td>
+	    				</tr>
+	    			</tbody>
+
+
+	    		</table>
+	    	</div>
+</div>

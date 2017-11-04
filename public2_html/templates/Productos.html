@@ -1,0 +1,120 @@
+	<div class="row">
+		<div class="col s6">
+			<h1>{{message}}</h1>
+			<p>{{subtitle}}</p>
+		</div>
+	</div>
+
+	<div class="row">			
+	    	<div class="col s4">
+				<form>
+					<div class="row">
+						<div class="input-field col s12">
+				          <input required id="Tipo_referencia" type="text" class="validate" ng-value="nuevo.Tipo_referencia" ng-model="nuevo.Tipo_referencia">
+				          <label for="Tipo_referencia">Referencia</label>
+				        </div>
+					</div>
+
+					<div class="row">
+						<div class="input-field col s12">
+				          <input required id="Nombre_producto" type="text" class="validate" ng-value="nuevo.Nombre_producto" ng-model="nuevo.Nombre_producto">
+				          <label for="Nombre_producto">Nombre</label>
+				        </div>
+					</div>
+
+					<div class="row">
+						<div class="input-field col s12">
+				          <input required id="Descripcion_producto" type="text" class="validate" ng-value="nuevo.Descripcion_producto" ng-model="nuevo.Descripcion_producto">
+				          <label for="Descripcion_producto">Descripcion</label>
+				        </div>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col s12">
+				          <input required id="Tipo_producto" type="text" class="validate" ng-value="nuevo.Tipo_producto" ng-model="nuevo.Tipo_producto">
+				          <label for="Tipo_producto">Tipo</label>
+				        </div>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col s12">
+				          <input required id="Tipo_material" type="text" class="validate" ng-value="nuevo.Tipo_material" ng-model="nuevo.Tipo_material">
+				          <label for="Tipo_material">Material</label>
+				        </div>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col s12">
+				          <input required id="Color" type="text" class="validate" ng-value="nuevo.Color" ng-model="nuevo.Color">
+				          <label for="Color">Color</label>
+				        </div>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col s12">
+				          <input required id="Peso" type="text" class="validate" ng-value="nuevo.Peso" ng-model="nuevo.Peso">
+				          <label for="Peso">Peso</label>
+				        </div>
+					</div>
+					
+					
+
+					<div class="row">
+						<div class="col-s4" ng-if="nuevo.Id == null">
+							<button class="btn waves-effect blue" ng-click="post()">Adicionar</button>
+						</div>
+
+						<div class="col-s4" ng-if="nuevo.Id != null">
+							<button class="btn waves-effect blue" ng-click="put(nuevo.Id)">Actualizar</button>
+						</div>
+					
+					</div>
+	    		</form>
+
+
+	    	</div>
+	    	<div class="col s8">
+	    	<input type="text" ng-model="search" placeholder="Buscar">
+				
+
+
+	    		<table class="highlight responsive-table">
+	    			<thead>
+	    				<tr>
+	    					<th>ID</th>
+	    					<th>Referencia</th>
+	    					<th>Nombre</th>
+	    					<th>Descripcion</th>
+							<th>Tipo</th>
+							<th>Material</th>
+							<th>Color</th>
+							<th>Peso</th>
+							<th></th>
+	    					<th></th>
+	    				</tr>
+	    			</thead>
+
+	    			<tbody ng-if="lista.length != null">
+	    				<tr ng-click="get(x.Id)" ng-repeat="x in lista | filter : search">
+	    					<td>{{x.Id}}</td>
+	    					<td>{{x.Tipo_referencia}}</td>
+							<td>{{x.Nombre_producto}}</td>
+	    					<td>{{x.Descripcion_producto}}</td>
+	    					<td>{{x.Tipo_producto}}</td>
+							<td>{{x.Tipo_material}}</td>
+							<td>{{x.Color}}</td>
+							<td>{{x.Peso}}</td>
+	    					<td><button class="btn btn-small waves-effect red" ng-click="delete(x.Id)">eliminar</button></td>
+	    				</tr>
+	    			</tbody>
+
+	    			<tbody ng-if="lista.length == null">
+	    				<tr>
+	    					<td colspan="4">No hay datos dispobibles</td>
+	    				</tr>
+	    			</tbody>
+
+
+	    		</table>
+	    	</div>
+	    </div>
